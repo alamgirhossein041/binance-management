@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime, JSON
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
@@ -22,8 +22,7 @@ class Wallet(Base):
     __tablename__ = "wallets"
 
     id = Column(Integer, primary_key=True, index=True)
-    user = Column(String, unique=True, index=True)
-    coins = Column(String)
+    balance = Column(JSON)
     api_key = Column(String) # warn: not safe
     secret_key = Column(String) # warn: not safe
     is_active = Column(Boolean, default=True)

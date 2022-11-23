@@ -2,7 +2,7 @@ from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.db.database import engine
 from app.models import models
-from app.routers import user
+from app.routers import user, wallet
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -13,8 +13,11 @@ app = FastAPI(
     openapi_url=None,
 )
 
+# /routers
 app.include_router(user.router)
+app.include_router(wallet.router)
 
+# test endpoint
 @app.get("/ping")
 async def root():
     return {"message": "pong"}
