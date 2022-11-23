@@ -24,6 +24,8 @@ class Wallet(Base):
     id = Column(Integer, primary_key=True, index=True)
     user = Column(String, unique=True, index=True)
     coins = Column(String)
+    api_key = Column(String) # warn: not safe
+    secret_key = Column(String) # warn: not safe
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
