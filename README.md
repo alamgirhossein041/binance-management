@@ -23,3 +23,4 @@ There are 4 api endpoints
 - POST /wallets/create - Creates a new wallet, needs api_key, secret_key and owner_id
 - GET /wallets/{id} - Show a single wallet (no balances in USD)
 
+
