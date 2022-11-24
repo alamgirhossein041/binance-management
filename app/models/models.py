@@ -12,9 +12,6 @@ class User(Base):
     name = Column(String)
     # MVP - needs no pwd
     is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
-    deleted_at = Column(DateTime(timezone=True))
 
     wallets = relationship("Wallet", back_populates="owner")
 
@@ -26,9 +23,7 @@ class Wallet(Base):
     api_key = Column(String) # warn: not safe
     secret_key = Column(String) # warn: not safe
     is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
-    deleted_at = Column(DateTime(timezone=True))
+
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     owner = relationship("User", back_populates="wallets")
